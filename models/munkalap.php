@@ -5,7 +5,7 @@ class MunkalapModel {
     private $db;
 
     public function __construct() {
-        $database = new Database();
+        $database = new DatabaseHandle();
         $this->db = $database->connect();
     }
 
@@ -16,3 +16,4 @@ class MunkalapModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+?>

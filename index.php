@@ -10,5 +10,5 @@ define('SITE_ROOT', 'http://localhost/web_II_beadando/');
 
 // a router.php vez�rl� bet�lt�se
 require_once(SERVER_ROOT . 'controllers/' . 'router.php');
-
+require_once(SERVER_ROOT . 'models/' . 'db.php');
 ?>

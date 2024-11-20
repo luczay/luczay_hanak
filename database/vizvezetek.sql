@@ -52,3 +52,45 @@ FIELDS TERMINATED BY '\t'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (bedatum, javdatum, helyaz, szereloaz, munkaora, anyagar);
+
+
+-- ********************************************************
+-- felhasznalo tabla letrehozasa es feltoltese adatokkal
+
+CREATE TABLE felhasznalo (
+    az INT PRIMARY KEY AUTO_INCREMENT,
+    felhasznalonev VARCHAR(50),    
+    keresztnev VARCHAR(50),     
+    vezeteknev VARCHAR(70),  
+    jelszo varchar(40) NOT NULL DEFAULT '',         
+    munkalapaz INT,        
+    jogosultsag varchar(3) NOT NULL DEFAULT '_1_',               
+    FOREIGN KEY (munkalapaz) REFERENCES munkalap(az)     
+);
+
+INSERT INTO `felhasznalo` (`felhasznalonev`, `keresztnev`, `vezeteknev`, `jelszo`, `munkalapaz`, `jogosultsag`)
+VALUES
+('Rendszer', 'Admin', 'Admin', sha1('admin'), NULL, '__1'),
+('p.sandor', 'Sándor', 'Petőfi', sha1('login1'), 1, '_1_');
+
+
+-- ********************************************************
+-- menu tabla letrehozasa es feltoltese adatokkal
+CREATE TABLE IF NOT EXISTS `menu` (
+  `url` varchar(30) NOT NULL,
+  `nev` varchar(30) NOT NULL,
+  `szulo` varchar(30) NOT NULL,
+  `jogosultsag` varchar(3) NOT NULL,
+  `sorrend` tinyint(4) NOT NULL,
+  PRIMARY KEY (`url`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `menu` (`url`, `nev`, `szulo`, `jogosultsag`, `sorrend`) VALUES
+('admin', 'Admin', '', '001', 80),
+('alapinfok', 'Alapinfók', 'elerhetoseg', '111', 40),
+('belepes', 'Belépés', '', '100', 60),
+('elerhetoseg', 'Elérhetőség', '', '111', 20),
+('kiegeszitesek', 'Kiegészítések', 'elerhetoseg', '011', 50),
+('kilepes', 'Kilépés', '', '011', 70),
+('linkek', 'Linkek', '', '100', 30),
+('nyitolap', 'Nyitólap', '', '111', 10);

@@ -5,7 +5,7 @@ class SzereloModel {
     private $db;
 
     public function __construct() {
-        $database = new Database();
+        $database = new DatabaseHandle();
         $this->db = $database->connect();
     }
 
@@ -37,3 +37,4 @@ class SzereloModel {
     }
     
 }
+?>
