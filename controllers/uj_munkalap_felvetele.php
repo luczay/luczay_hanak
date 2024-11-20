@@ -1,6 +1,6 @@
 <?php
 
-class Beleptet_Controller
+class Uj_Munkalap_Felvetele_Controller
 {
 	public $baseName = 'beleptet';  //meghat�rozni, hogy melyik oldalon vagyunk
 	public function main(array $vars) // a router �ltal tov�bb�tott param�tereket kapja

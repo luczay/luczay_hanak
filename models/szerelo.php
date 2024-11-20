@@ -1,12 +1,12 @@
 <?php
-require_once 'userDatabase.php';
+require_once 'db.php'; 
 
 class SzereloModel {
     private $db;
 
     public function __construct() {
-        $database = new UserDatabase();
-        $this->db = $database->getConnection();
+        $database = new DatabaseHandle();
+        $this->db = $database->connect();
     }
 
     public function getSzerelo($az = null, $kezdev = null, $nev = null) {
@@ -37,3 +37,4 @@ class SzereloModel {
     }
     
 }
+?>
