@@ -1,9 +1,4 @@
-<h2>
-    <br>A következő címen és telefonon érhet el:<br>
-    <br>Cím: ...<br>
-    <br>Telefon: ...<br>
-</h2>
-
+<title>Munkalapok</title>
 <div class="container my-5">
         <!-- Page Title and "Új Munkalap" Button -->
         <div class="d-flex justify-content-between align-items-center mb-4">

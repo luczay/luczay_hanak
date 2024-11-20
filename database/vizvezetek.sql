@@ -89,8 +89,10 @@ INSERT INTO `menu` (`url`, `nev`, `szulo`, `jogosultsag`, `sorrend`) VALUES
 ('admin', 'Admin', '', '001', 80),
 ('alapinfok', 'Alapinfók', 'elerhetoseg', '111', 40),
 ('belepes', 'Belépés', '', '100', 60),
-('elerhetoseg', 'Elérhetőség', '', '111', 20),
+('munkalapok', 'Munkalapok', '011', '111', 20),
 ('kiegeszitesek', 'Kiegészítések', 'elerhetoseg', '011', 50),
 ('kilepes', 'Kilépés', '', '011', 70),
-('linkek', 'Linkek', '', '100', 30),
+('szerelok', 'Szerelők', '', '011', 30),
+('megrendeles', 'Megrendelés', '', '011', 90),
+('megrendelesek', 'Megrendelések', '', '001', 1),
 ('nyitolap', 'Nyitólap', '', '111', 10);

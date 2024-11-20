@@ -7,8 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Vízvezeték szerelők</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-static/">
 
     <!-- Bootstrap core CSS -->
@@ -21,7 +19,7 @@
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="#">Top navbar</a>
+      <a class="navbar-brand" href="#">Szerelő Foglaló</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
