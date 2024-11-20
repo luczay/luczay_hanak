@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php'; // Adjust the path as needed
+require_once 'db.php'; 
 
 class HelyModel {
     private $db;
