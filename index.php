@@ -1,12 +1,14 @@
 <?php
 
-//alkalmazás gyökér könyvtára a szerveren
-define('SERVER_ROOT', $_SERVER['DOCUMENT_ROOT'].'/beadandoweb2mvc/');
+//alkalmazï¿½s gyï¿½kï¿½r kï¿½nyvtï¿½ra a szerveren
+// define('SERVER_ROOT', $_SERVER['DOCUMENT_ROOT'].'/beadandoweb2mvc/');
+define('SERVER_ROOT', $_SERVER['DOCUMENT_ROOT'].'/web_II_beadando/');
 
-//URL cím az alkalmazás gyökeréhez
-define('SITE_ROOT', 'http://localhost/beadandoweb2mvc/');
+//URL cï¿½m az alkalmazï¿½s gyï¿½kerï¿½hez
+// define('SITE_ROOT', 'http://localhost/beadandoweb2mvc/');
+define('SITE_ROOT', 'http://localhost/web_II_beadando/');
 
-// a router.php vezérlõ betöltése
+// a router.php vezï¿½rlï¿½ betï¿½ltï¿½se
 require_once(SERVER_ROOT . 'controllers/' . 'router.php');
 
 ?>
