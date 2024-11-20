@@ -6,7 +6,7 @@ class Beleptet_Model
 	{
 		$retData['eredmeny'] = "";
 		try {
-			$connection = Database::getConnection();
+			$connection = UserDatabase::getConnection();
 			$sql = "select id, csaladi_nev, utonev, jogosultsag from felhasznalok where bejelentkezes='".$vars['login']."' and jelszo='".sha1($vars['password'])."'";
 			$stmt = $connection->query($sql);
 			$felhasznalo = $stmt->fetchAll(PDO::FETCH_ASSOC);
