@@ -8,6 +8,8 @@ if(! isset($_SESSION['userlevel'])) $_SESSION['userlevel'] = "1__";
 
 include(SERVER_ROOT . 'includes/database.inc.php');
 include(SERVER_ROOT . 'includes/menu.inc.php');
+include(SERVER_ROOT . 'includes/munkalapok.inc.php');
+include(SERVER_ROOT . 'includes/szerelok.inc.php');
 
 // Felbontjuk a param�tereket. Az & elv�laszt� jellel v�gzett felbont�s
 // megfelel� lesz, els� eleme a megtekinteni k�v�nt oldal neve.
@@ -17,12 +19,15 @@ $subpage = "";
 $vars = array();
 
 $request = $_SERVER['QUERY_STRING'];
-error_log($request);
 if($request != "")
 {
+	if (strpos($request, '&') !== false) {
+		$request = explode('&', $request)[0];
+	}
+
 	$params = explode('/', $request);
-	$page = array_shift($params); // a k�rt oldal neve
 	
+	$page = array_shift($params); // a k�rt oldal neve
 	if(array_key_exists($page, Menu::$menu) && count($params)>0) // Az oldal egy men�pont oldala �s van m�g adat az url-ben
 	{
 		$subpage = array_shift($params); // a k�rt aloldal
@@ -32,7 +37,9 @@ if($request != "")
 			$subpage = ""; // �s nincs aloldal
 		}
 	}
+
 	$vars += $_POST;
+	$vars += $_GET;
 	
 	foreach($params as $p) // a param�terek t�mbje felt�lt�se
 	{
@@ -54,6 +61,7 @@ if(! file_exists($target))
 
 include_once($target);
 $class = ucfirst($controllerfile).'_Controller';
+
 if(class_exists($class))
 	{ $controller = new $class; }
 else
@@ -62,6 +70,7 @@ else
 // spl_autoload_register(...) f�ggv�ny, amely ismeretlen oszt�ly h�v�sakor, megpr�b�lja automatikusan bet�lteni a megfelel� f�jlt. 
 // A modellekhez haszn�ljuk, egys�gesen nevezz�k el f�jljainkat (oszt�ly nev�vel megegyez�, csupa kisbet�s .php)
 spl_autoload_register(function($className) {
+	error_log($className);
     $file = SERVER_ROOT.'models/'.strtolower($className).'.php';
     if(file_exists($file))
     { include_once($file); }

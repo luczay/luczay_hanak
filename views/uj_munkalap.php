@@ -51,8 +51,7 @@
                 <label for="szerelo" class="form-label">Szerelő</label>
                 <select class="form-select" id="szerelo" name="szerelo" onchange="toggleNewSzerelo()" required>
                     <option value="">Válasszon szerelőt...</option>
-                    <option value="1">Kiss János</option>
-                    <option value="2">Nagy Éva</option>
+                    <?php echo Szerelok::getSzerelok(); ?>
                     <option value="new">Új Szerelő Hozzáadása</option>
                 </select>
             </div>

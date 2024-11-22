@@ -6,6 +6,7 @@ class View_Loader
     private $render = FALSE;
     private $selectedItems = FALSE;
     private $style = FALSE;
+    private $munkalap_id = 0;
 
     public function __construct($viewName)
     {

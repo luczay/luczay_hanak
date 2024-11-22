@@ -9,6 +9,18 @@ class SzereloModel {
         $this->db = $database->connect();
     }
 
+    public function createSzerelo($vars) {
+        $nev = $vars['nev'];
+        $kezdev = $vars['kezdev'];
+
+        $stmt = $this->db->prepare("INSERT INTO szerelo (nev, kezdev) VALUES (:nev, :kezdev)");
+            
+        $stmt->bindParam(':nev', $nev, PDO::PARAM_STR);
+        $stmt->bindParam(':kezdev', $kezdev, PDO::PARAM_INT);
+            
+        $stmt->execute();
+    }
+
     public function getSzerelo($az = null, $kezdev = null, $nev = null) {
         // WHERE 1 mindig true lesz, így ez egy egyszerűsítés, hogy string concat egyszerűbb legyen
         $query = 'SELECT * FROM szerelo WHERE 1';

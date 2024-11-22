@@ -96,3 +96,17 @@ INSERT INTO `menu` (`url`, `nev`, `szulo`, `jogosultsag`, `sorrend`) VALUES
 ('megrendeles', 'Megrendelés', '', '011', 90),
 ('megrendelesek', 'Megrendelések', '', '001', 1),
 ('nyitolap', 'Nyitólap', '', '111', 10);
+
+
+-- ********************************************************
+-- megrendeles tabla letrehozasa es feltoltese adatokkal
+CREATE TABLE megrendeles (
+    az INT PRIMARY KEY AUTO_INCREMENT,          
+    felhasznaloaz INT,                          
+    helyaz INT,                                 
+    leiras TEXT,                                
+    szereloaz INT,                              
+    FOREIGN KEY (felhasznaloaz) REFERENCES felhasznalo(az) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (helyaz) REFERENCES hely(az) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (szereloaz) REFERENCES szerelo(az) ON DELETE CASCADE ON UPDATE CASCADE
+);

@@ -9,14 +9,12 @@
     <div class="container my-5">
         <h1 class="text-primary text-center mb-4">Új Megrendelés</h1>
 
-        <form action="create_megrendeles_handler.php" method="POST" class="border p-4 rounded shadow-sm">
+        <form action="uj_megrendeles" method="POST" class="border p-4 rounded shadow-sm">
             <div class="mb-3">
                 <label for="szerelo" class="form-label">Válasszon Szerelőt</label>
                 <select id="szerelo" name="szerelo" class="form-select" required>
                     <option value="" disabled selected>Válasszon egy szerelőt...</option>
-                    <option value="1">Kovács Péter</option>
-                    <option value="2">Nagy Erika</option>
-                    <option value="3">Szabó Attila</option>
+                    <?php echo Szerelok::getSzerelok(); ?>
                 </select>
             </div>
 
@@ -37,7 +35,7 @@
 
             <div class="text-center">
                 <button type="submit" class="btn btn-success">Megrendelés Létrehozása</button>
-                <a href="megrendelesek_list.php" class="btn btn-secondary">Vissza a listához</a>
+                <a href="megrendelesek" class="btn btn-secondary">Vissza a listához</a>
             </div>
         </form>
     </div>
