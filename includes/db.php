@@ -1,7 +1,7 @@
 <?php
 class DatabaseHandle {
     private static $host = 'localhost';
-    private static $dbName = 'vizvezetek_szerelok';
+    private static $dbName = 'dbBeadando';
     private static $username = 'root';
     private static $password = '';
     private static $conn = NULL;

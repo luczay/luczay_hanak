@@ -1,8 +1,8 @@
 <?php
 
-class Belepes_Controller
+class Elerhetoseg_alapinfok_Controller
 {
-	public $baseName = 'belepes';
+	public $baseName = 'elerhetoseg_alapinfok';
 	public function main(array $vars) {
 		$view = new View_Loader($this->baseName."_main");
 	}

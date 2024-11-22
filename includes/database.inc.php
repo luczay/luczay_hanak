@@ -1,8 +1,8 @@
 <?php
-    define('HOST', 'localhost');
-    define('DATABASE', 'web2');
-    define('USER', 'root');
-    define('PASSWORD', '');
+const HOST = 'localhost';
+const DATABASE = 'dbBeadando';
+const USER = 'root';
+const PASSWORD = '';
     
     class Database {
         private static $connection = FALSE;

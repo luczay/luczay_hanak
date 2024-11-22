@@ -6,7 +6,6 @@ class View_Loader
     private $render = FALSE;
     private $selectedItems = FALSE;
     private $style = FALSE;
-
     public function __construct($viewName)
     {
         $file = SERVER_ROOT . 'views/' . strtolower($viewName) . '.php';
@@ -21,7 +20,6 @@ class View_Loader
             $this->style = SITE_ROOT . 'css/' . strtolower($viewName) . '.css';;
         }        
     }
-
     public function assign($variable , $value)
     {
         $this->data[$variable] = $value;
@@ -33,7 +31,7 @@ class View_Loader
         $this->data['selectedItems'] = $this->selectedItems;
         $this->data['style'] = $this->style;
         $viewData = $this->data;
-        include(SERVER_ROOT . 'views/page_base.php');
+        include(SERVER_ROOT . '/views/page_base.php');
     }
 }
 
