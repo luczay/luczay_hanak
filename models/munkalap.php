@@ -162,5 +162,15 @@ class MunkalapModel {
 
         return $retData;
     }
+
+    public function removeMunkalap($az) {
+        $sql = "DELETE FROM munkalap WHERE az = :az";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->bindParam(':az', $az, PDO::PARAM_INT);
+
+        $stmt->execute();
+    }
 }
 ?>

@@ -2,8 +2,8 @@
 class DatabaseHandle {
     private static $host = 'localhost';
     private static $dbName = 'vizvezetek_szerelok';
-    private static $username = 'root';
-    private static $password = '';
+    private static $username = 'root'; //vizvezetekdb
+    private static $password = ''; //LuczayHanakDBPassword2024
     private static $conn = NULL;
 
     public static function connect() {

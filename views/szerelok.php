@@ -9,7 +9,7 @@
     <div class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h1 class="text-primary">Szerelők</h1>
-            <a href="uj_szerelo" class="btn btn-success">Új Szerelő</a>
+            <?php echo Szerelok::getUjSzereloGomb(); ?>
         </div>
 
         <table class="table table-striped table-bordered">

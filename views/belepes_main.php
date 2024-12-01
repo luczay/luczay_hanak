@@ -15,7 +15,7 @@
 
     <h2><br><?= (isset($viewData['uzenet']) ? $viewData['uzenet'] : "") ?><br></h2>
     <form class="form-signin"  action="<?= SITE_ROOT ?>beleptet" method="post">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Kérem jelentkezzen be</h1>
 
       <label for="login">Felhasználó:</label><input type="text" class="form-control" name="login" id="login" required pattern="[a-zA-Z][\-\.a-zA-Z0-9_]{3}[\-\.a-zA-Z0-9_]+"><br>
       <label for="password">Jelszó:</label><input type="password" class="form-control" name="password" id="password" required pattern="[\-\.a-zA-Z0-9_]{4}[\-\.a-zA-Z0-9_]+"><br>

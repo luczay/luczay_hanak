@@ -10,6 +10,9 @@ include(SERVER_ROOT . 'includes/database.inc.php');
 include(SERVER_ROOT . 'includes/menu.inc.php');
 include(SERVER_ROOT . 'includes/munkalapok.inc.php');
 include(SERVER_ROOT . 'includes/szerelok.inc.php');
+include(SERVER_ROOT . 'includes/megrendelesek.inc.php');
+include(SERVER_ROOT . 'includes/felhasznalok.inc.php');
+include(SERVER_ROOT . 'includes/arfolyam.inc.php');
 
 // Felbontjuk a param�tereket. Az & elv�laszt� jellel v�gzett felbont�s
 // megfelel� lesz, els� eleme a megtekinteni k�v�nt oldal neve.
@@ -28,6 +31,7 @@ if($request != "")
 	$params = explode('/', $request);
 	
 	$page = array_shift($params); // a k�rt oldal neve
+	error_log("page: ".$page);
 	if(array_key_exists($page, Menu::$menu) && count($params)>0) // Az oldal egy men�pont oldala �s van m�g adat az url-ben
 	{
 		$subpage = array_shift($params); // a k�rt aloldal
@@ -40,7 +44,11 @@ if($request != "")
 
 	$vars += $_POST;
 	$vars += $_GET;
-	
+	$vars['request_method'] = $_SERVER['REQUEST_METHOD'];
+	foreach ($vars as $key => $value) {
+		error_log("key: ".$key." value: ".$value);
+	}
+
 	foreach($params as $p) // a param�terek t�mbje felt�lt�se
 	{
 		$vars[] = $p;
@@ -52,6 +60,7 @@ if($request != "")
 // el�bbiekben lek�rdezett param�tereket tov�bbadva. 
 
 $controllerfile = $page.($subpage != "" ? "_".$subpage : "");
+error_log("controller file: ".$controllerfile);
 $target = SERVER_ROOT.'controllers/'.$controllerfile.'.php';
 if(! file_exists($target))
 {
@@ -70,8 +79,8 @@ else
 // spl_autoload_register(...) f�ggv�ny, amely ismeretlen oszt�ly h�v�sakor, megpr�b�lja automatikusan bet�lteni a megfelel� f�jlt. 
 // A modellekhez haszn�ljuk, egys�gesen nevezz�k el f�jljainkat (oszt�ly nev�vel megegyez�, csupa kisbet�s .php)
 spl_autoload_register(function($className) {
-	error_log($className);
     $file = SERVER_ROOT.'models/'.strtolower($className).'.php';
+	error_log("model file: ".$file);
     if(file_exists($file))
     { include_once($file); }
     else

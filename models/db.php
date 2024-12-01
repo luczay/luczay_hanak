@@ -1,9 +1,9 @@
 <?php
 class DatabaseHandle {
-    private static $host = 'localhost';
-    private static $dbName = 'vizvezetek_szerelok';
-    private static $username = 'root';
-    private static $password = '';
+    private static $host = 'sql304.infinityfree.com';
+    private static $dbName = 'if0_37791146_vizvezetek_szerelok';
+    private static $username = 'if0_37791146';
+    private static $password = '99JelszoNincs99';
     private static $conn = NULL;
 
     public static function connect() {

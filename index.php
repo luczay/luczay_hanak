@@ -6,7 +6,7 @@ define('SERVER_ROOT', $_SERVER['DOCUMENT_ROOT'].'/luczay_hanak/');
 
 //URL c�m az alkalmaz�s gy�ker�hez
 // define('SITE_ROOT', 'http://localhost/beadandoweb2mvc/');
-define('SITE_ROOT', 'http://localhost//luczay_hanak/');
+define('SITE_ROOT', 'http://luczayhanak.kesug.com/luczay_hanak/');
 
 // a router.php vez�rl� bet�lt�se
 require_once(SERVER_ROOT . 'controllers/' . 'router.php');

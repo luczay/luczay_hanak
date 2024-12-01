@@ -19,6 +19,8 @@ class SzereloModel {
         $stmt->bindParam(':kezdev', $kezdev, PDO::PARAM_INT);
             
         $stmt->execute();
+
+        return "Szerelő ".$nev." ".$kezdev." kezdési évvel sikeresen létre lett hozva!";
     }
 
     public function getSzerelo($az = null, $kezdev = null, $nev = null) {
@@ -48,5 +50,40 @@ class SzereloModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+
+    public function removeSzerelo($az) {
+        $sql = "DELETE FROM szerelo WHERE az = :az";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->bindParam(':az', $az, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $az." azonosítójú szerelő sikeresen törölve lett!";
+    }
+
+    public function updateSzerelo($az, $ujNev, $ujKezdev) {       
+        $updates = [];
+        $params = [':az' => $az];
+
+        if (!empty($ujNev)) {
+            $updates[] = "nev = :nev";
+            $params[':nev'] = $ujNev;
+        }
+
+        if (!empty($ujKezdev)) {
+            $updates[] = "kezdev = :kezdev";
+            $params[':kezdev'] = $ujKezdev;
+        }
+
+        $sql = "UPDATE szerelo SET " . implode(", ", $updates) . " WHERE az = :az";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute($params);
+
+        return $az." azonosítójú szerelő sikeresen frissítve lett!";
+    }
 }
 ?>

@@ -13,6 +13,7 @@
             <table class="table table-bordered table-hover table-striped align-middle">
                 <thead class="table-dark">
                     <tr>
+                        <th>Megrendelés Azonosítója</th>
                         <th>Megrendelő Kereszt Neve</th>
                         <th>Megrendelő Vezeték Neve</th>
                         <th>Város</th>
@@ -23,30 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>János</td>
-                        <td>Kovács</td>
-                        <td>Budapest</td>
-                        <td>Fő utca 12</td>
-                        <td>Csaptelep javítás</td>
-                        <td>Kovács Péter</td>
-                        <td>
-                            <a href="edit_megrendeles.php?id=1" class="btn btn-sm btn-warning">Szerkeszt</a>
-                            <a href="delete_megrendeles.php?id=1" class="btn btn-sm btn-danger">Töröl</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Éva</td>
-                        <td>Nagy</td>
-                        <td>Szeged</td>
-                        <td>Kossuth Lajos utca 5</td>
-                        <td>Kazán karbantartás</td>
-                        <td>Szabó Attila</td>
-                        <td>
-                            <a href="edit_megrendeles.php?id=2" class="btn btn-sm btn-warning">Szerkeszt</a>
-                            <a href="delete_megrendeles.php?id=2" class="btn btn-sm btn-danger">Töröl</a>
-                        </td>
-                    </tr>
+                    <?php echo Megrendelesek::getTableRows(); ?>
                 </tbody>
             </table>
         </div>

@@ -17,8 +17,7 @@ Class Munkalapok {
             $tabla_sorok .= "<td>".$row['munkaora']."</td>";
             $tabla_sorok .= "<td>".$row['anyagar']."</td>";
             $tabla_sorok .= "<td> 
-                                <a href=\"munkalap_edit?azonosito=".$row['munkalap_id']."\" class=\"btn btn-warning btn-sm\">Szerkeszt</a>
-                                <a href=\"torol?azonosito=".$row['munkalap_id']."\" class=\"btn btn-danger btn-sm\">Töröl</a> 
+                                <a href=\"munkalap_torol?az=".$row['munkalap_id']."\" class=\"btn btn-danger btn-sm\">Töröl</a> 
                             </td>";
             $tabla_sorok .= "</tr>";
         }

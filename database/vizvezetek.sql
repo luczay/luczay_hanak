@@ -5,13 +5,13 @@ CREATE DATABASE vizvezetek_szerelok;
 USE vizvezetek_szerelok;
 
 CREATE TABLE szerelo (
-    az INT PRIMARY KEY,       
+    az INT PRIMARY KEY AUTO_INCREMENT,       
     nev VARCHAR(100),             
     kezdev INT                    
 );
 
 CREATE TABLE hely (
-    az INT PRIMARY KEY,           
+    az INT PRIMARY KEY AUTO_INCREMENT,           
     telepules VARCHAR(100),       
     utca VARCHAR(255)             
 );
@@ -24,7 +24,7 @@ CREATE TABLE munkalap (
     szereloaz INT,                        
     munkaora INT,                         
     anyagar INT,                          
-    FOREIGN KEY (helyaz) REFERENCES hely(az),           
+    FOREIGN KEY (helyaz) REFERENCES hely(az),            
     FOREIGN KEY (szereloaz) REFERENCES szerelo(az)      
 );
 
@@ -63,15 +63,15 @@ CREATE TABLE felhasznalo (
     keresztnev VARCHAR(50),     
     vezeteknev VARCHAR(70),  
     jelszo varchar(40) NOT NULL DEFAULT '',         
-    munkalapaz INT,        
-    jogosultsag varchar(3) NOT NULL DEFAULT '_1_',               
-    FOREIGN KEY (munkalapaz) REFERENCES munkalap(az)     
+    munkalapaz TEXT,        
+    jogosultsag varchar(3) NOT NULL DEFAULT '_1_'              
 );
 
 INSERT INTO `felhasznalo` (`felhasznalonev`, `keresztnev`, `vezeteknev`, `jelszo`, `munkalapaz`, `jogosultsag`)
 VALUES
 ('Rendszer', 'Admin', 'Admin', sha1('admin'), NULL, '__1'),
-('p.sandor', 'Sándor', 'Petőfi', sha1('login1'), 1, '_1_');
+('p.sandor', 'Sándor', 'Petőfi', sha1('login1'), '1', '_1_'),
+('a.janos', 'János', 'Arany', sha1('login2'), NULL, '_1_');
 
 
 -- ********************************************************
@@ -86,16 +86,20 @@ CREATE TABLE IF NOT EXISTS `menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `menu` (`url`, `nev`, `szulo`, `jogosultsag`, `sorrend`) VALUES
-('admin', 'Admin', '', '001', 80),
 ('alapinfok', 'Alapinfók', 'elerhetoseg', '111', 40),
 ('belepes', 'Belépés', '', '100', 60),
-('munkalapok', 'Munkalapok', '011', '111', 20),
+('regisztracio', 'Regisztráció', '', '100', 59),
+('munkalapok', 'Munkalapok', '', '111', 20),
 ('kiegeszitesek', 'Kiegészítések', 'elerhetoseg', '011', 50),
 ('kilepes', 'Kilépés', '', '011', 70),
 ('szerelok', 'Szerelők', '', '011', 30),
 ('megrendeles', 'Megrendelés', '', '011', 90),
-('megrendelesek', 'Megrendelések', '', '001', 1),
+('felhasznalok', 'Felhasználók', '', '001', 1),
+('megrendelesek', 'Megrendelések', '', '011', 2),
+('arfolyamok', 'Árfolyamok', '', '001', 3),
+('importalas', 'Importálás', '', '001', 4),
 ('nyitolap', 'Nyitólap', '', '111', 10);
+
 
 
 -- ********************************************************
@@ -110,3 +114,8 @@ CREATE TABLE megrendeles (
     FOREIGN KEY (helyaz) REFERENCES hely(az) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (szereloaz) REFERENCES szerelo(az) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+INSERT INTO `megrendeles` (`felhasznaloaz`, `helyaz`, `leiras`, `szereloaz`)
+VALUES
+('2', '7', 'Lorem ipsum lorem ipsum lorem ipsum', '1'),
+('3', '8', 'Lorem ipsum lorem ipsum lorem ipsum lorem ipsum', '2');

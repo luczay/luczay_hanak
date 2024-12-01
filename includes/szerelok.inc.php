@@ -13,6 +13,15 @@ Class Szerelok {
         return $szerelo_selects;
     }
 
+    public static function getUjSzereloGomb() {
+        if ($_SESSION['userlevel'] == '__1') {
+            return "<a href=\"uj_szerelo\" class=\"btn btn-success\">Új Szerelő</a>";
+        }
+        else {
+            return "";
+        }
+    }
+
     public static function getSzerelokInTable() {
         $szerelo_model = new SzereloModel();
         $results = $szerelo_model->getSzerelo();
@@ -25,8 +34,7 @@ Class Szerelok {
 
             if ($_SESSION['userlevel'] == '__1') {
                 $tabla_sorok .= "<td> 
-                                <a href=\"szerelo_edit?azonosito=".$row['az']."\" class=\"btn btn-warning btn-sm\">Szerkeszt</a>
-                                <a href=\"szerelo_torol?azonosito=".$row['az']."\" class=\"btn btn-danger btn-sm\">Töröl</a> 
+                                <a href=\"szerelo_torol?az=".$row['az']."\" class=\"btn btn-danger btn-sm\">Töröl</a> 
                             </td>";
                 $tabla_sorok .= "</tr>";
             } else {
